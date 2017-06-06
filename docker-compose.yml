@@ -3,7 +3,7 @@ services:
   traefik:
     image: traefik
     container_name: traefik
-    command: --web --docker --docker.domain=wekuiz.ga --logLevel=INFO
+    command: --web --docker --docker.domain=ga --logLevel=INFO
     ports:
       - 80:80
       - 8080:8080
