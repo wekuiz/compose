@@ -1,0 +1,14 @@
+version: '2'
+services:
+  traefik:
+    image: traefik
+    container_name: traefik
+    command: --web --docker --docker.domain=wekuiz.ga --logLevel=INFO
+    ports:
+      - 80:80
+      - 8080:8080
+    labels:
+      - traefik.port=8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /dev/null:/traefik.toml
