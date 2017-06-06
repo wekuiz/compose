@@ -1,0 +1,10 @@
+traefik:
+  command: '--web --docker --docker.domain=ga --logLevel=INFO'
+  image: 'traefik:latest'
+  labels:
+    traefik.port: '8080'
+  ports:
+    - '80:80'
+  volumes:
+    - '/var/run/docker.sock:/var/run/docker.sock'
+    - '/dev/null:/traefik.toml'
