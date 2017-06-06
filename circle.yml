@@ -1,19 +1,20 @@
 version: 2
 jobs:
   build:
+    working_directory: /
     docker:
       - image: buildpack-deps:trusty
     steps:
       - checkout
       - setup_remote_docker
-  deploy:
-    steps:
       - run:
           name: Install Docker Compose
           command: |
             set -x
             curl -L https://github.com/docker/compose/releases/download/1.13.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
             chmod +x /usr/local/bin/docker-compose
+  deploy:
+    steps:
       - run:
           name: Deploy Application
           command: docker-compose -H tcp://wekuiz.ga:2375 up -d
